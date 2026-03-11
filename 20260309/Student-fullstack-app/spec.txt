@@ -1,0 +1,15 @@
+Build a fullstack app using typescript.
+
+For the backend, use express.js; react as the frontend and lokijs as the memory database.
+
+The app has only got a single page.
+
+On the header of the page, it has a single input text field to input name of a student. Then you can add the student to the app by pressing the [Add] button.
+
+Under the header, there is a table listing out all students stored in the app. The first column is the student name. The second column provides a number of buttons.
+
+The first button is the [Edit] button, when pressed, the row will become editable. Only student name is editable. The [Edit] button will now be labed with [Update]. When press the [Update] button, the change is saved.
+The second button is the [Delete] button, once pressed, it will show a popup to ask for confirmation. If [Yes] is pressed, the student record will be removed.
+
+I want both front end, back end and memory databased can be started with a single command.
+
