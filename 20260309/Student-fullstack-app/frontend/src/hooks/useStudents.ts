@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type Student from "../types/students";
 
 const API_URL: string = "http://localhost:5000/api/students";
@@ -34,6 +34,7 @@ export const useStudents = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name }),
     });
+    await refresh();
   };
 
   const update = async (id: number, name: string) => {
@@ -49,6 +50,10 @@ export const useStudents = () => {
     await fetch(`${API_URL}/${id}`, { method: "DELETE" });
     await refresh();
   };
+
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
 
   return { students, loading, error, add, update, remove, refresh };
 };

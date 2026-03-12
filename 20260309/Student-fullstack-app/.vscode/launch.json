@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Frontend",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend/src"
+    }
+    {
+      "name": "Launch Backend",
+      "request": "launch",
+      "type": "node",
+      "program": "${workspaceFolder}/backend/app.js",
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack Debug",
+      "configurations": ["Launch Backend", "Launch Frontend"]
+    }
+  ]
+}

@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useStudents } from "./hooks/useStudents";
 
 export default function App() {
-  const { students, add, update, remove } = useStudents();
+  const { students, add, update, remove, loading, error } = useStudents();
   const [newName, setNewName] = useState<string>("");
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editName, setEditName] = useState<string | null>(null);
 
   const handleAddStudent = async () => {
+    console.log("Adding student:", newName);
     if (!newName) return;
     await add(newName);
     setNewName("");
@@ -25,6 +26,8 @@ export default function App() {
     }
   };
 
+  if (loading) return <p>Loading...</p>;
+
   return (
     <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
       {/* header */}
@@ -36,6 +39,8 @@ export default function App() {
         />
         <button onClick={handleAddStudent}>Add</button>
       </header>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
       {/* table */}
       <table
